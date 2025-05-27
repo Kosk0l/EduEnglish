@@ -44,7 +44,7 @@ class NotificationWorker(appContext: Context, workerParams: WorkerParameters) :
         }
 
         val builder = NotificationCompat.Builder(applicationContext, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Пора повторять карточки!")
             .setContentText("Нужно зайти в приложение и повторить то, что выучил.")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
