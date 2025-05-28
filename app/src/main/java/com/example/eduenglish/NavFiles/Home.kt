@@ -56,8 +56,6 @@ fun Home(
             .padding(horizontal = 20.dp, vertical = 30.dp)
     ) {
 
-
-
         Text(
             text = "Home",
             color = MaterialTheme.colorScheme.surface,
@@ -78,7 +76,6 @@ fun Home(
             Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(20.dp))
             Text("Create Deck")
         }
-
 
 
         decks.forEach { deck ->

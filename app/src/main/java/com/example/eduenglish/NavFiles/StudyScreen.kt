@@ -150,11 +150,11 @@ fun StudyScreen(
                             onClick = {
                                 studyViewModel.onAnswer(StudyViewModel.AnswerQuality.GOOD)
                                 showAnswer = false
-                                lastColor = Color.Green
+                                lastColor = Color(0xFF398D19)
                             },
-                            border = BorderStroke(2.dp, Color.Green),
+                            border = BorderStroke(2.dp, Color(0xFF398D19)),
                             colors = ButtonDefaults.outlinedButtonColors(
-                                contentColor = Color.Green,
+                                contentColor = Color(0xFF398D19),
                                 containerColor = MaterialTheme.colorScheme.secondary
                             )
                         ) {
