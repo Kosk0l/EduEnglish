@@ -12,8 +12,8 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.sharp.DateRange
 import androidx.compose.material.icons.sharp.Home
+import androidx.compose.material.icons.sharp.Search
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -36,10 +36,12 @@ import com.example.eduenglish.NavFiles.CreateCard
 import com.example.eduenglish.NavFiles.CreateDeck
 import com.example.eduenglish.NavFiles.DeckVisual
 import com.example.eduenglish.NavFiles.Home
+import com.example.eduenglish.NavFiles.Search
 import com.example.eduenglish.NavFiles.Settings
-import com.example.eduenglish.NavFiles.Stats
 import com.example.eduenglish.NavFiles.StudyScreen
 import com.example.eduenglish.Notification.NotificationWorker
+import com.example.eduenglish.Retrofit.SearchViewModel
+import com.example.eduenglish.Room.AppDataBase
 import com.example.eduenglish.ViewModels.Other.SettingsViewModel
 import com.example.eduenglish.Routes.Routes
 import com.example.eduenglish.Routes.SelectorRoutes
@@ -49,6 +51,11 @@ import kotlinx.coroutines.runBlocking
 
 
 class MainActivity : ComponentActivity() {
+
+    val db by lazy { AppDataBase.getInstance(application) }
+    val deckDao by lazy { db.deckDao() }
+    val cardDao by lazy { db.cardDao() }
+    val searchViewModel by lazy { SearchViewModel(deckDao, cardDao) }
 
     // Переменные для темы приложения
     private val settingsViewModel by lazy { SettingsViewModel(application) }
@@ -85,7 +92,7 @@ class MainActivity : ComponentActivity() {
             // Настройки для BottomBar
             val selectorRoutes = listOf(
                 SelectorRoutes("Home", Routes.Home.route, Icons.Sharp.Home),
-                SelectorRoutes("Stats", Routes.Stats.route, Icons.Sharp.DateRange),
+                SelectorRoutes("Search", Routes.Search.route, Icons.Sharp.Search),
                 SelectorRoutes("Settings", Routes.Settings.route, Icons.Default.Settings)
             )
 
@@ -135,9 +142,11 @@ class MainActivity : ComponentActivity() {
                             Settings(navController, settingsViewModel)
                         }
 
-                        composable(Routes.Stats.route) {
-                            Stats()
+                        composable(Routes.Search.route) {
+                            Search(viewModel = searchViewModel)
                         }
+
+                        //====================================================================================================
 
                         composable(Routes.CreateDeck.route) {
                             CreateDeck(navController)
@@ -151,9 +160,7 @@ class MainActivity : ComponentActivity() {
                             DeckVisual(navController, deckId)
                         }
 
-                        composable(
-                            "CreateCard/{deckId}"
-                        ) { backStackEntry ->
+                        composable("CreateCard/{deckId}") { backStackEntry ->
                             val deckId = backStackEntry.arguments?.getString("deckId")?.toIntOrNull()
                             deckId?.let {
                                 CreateCard(deckId = it, navController = navController)
@@ -186,6 +193,7 @@ class MainActivity : ComponentActivity() {
 
     }// fun onCreate
 
+    //Notification
     private fun manageNotificationWork() {
 
         val enabled = runBlocking { settingsViewModel.notificationsEnabled.first() }
@@ -207,4 +215,3 @@ class MainActivity : ComponentActivity() {
     }
 
 }// class MainActivity
-//==================================================================================================

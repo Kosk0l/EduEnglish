@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 interface DeckDao {
 
     @Insert
-    suspend fun insert(deck: Deck)
+    suspend fun insert(deck: Deck): Long
 
     @Delete
     suspend fun delete(deck: Deck)
@@ -30,6 +30,7 @@ interface DeckDao {
 
     @Query("DELETE FROM deck WHERE id = :deckId")
     suspend fun deleteDeckById(deckId: Int)
+
 
 }
 

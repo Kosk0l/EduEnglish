@@ -4,7 +4,7 @@ sealed class Routes(val route: String) {
 
     // BottomBar
     object Home : Routes("Home")
-    object Stats : Routes("Stats")
+    object Search : Routes("Search")
     object Settings : Routes("Settings")
 
     // Ответления от Home
