@@ -40,11 +40,11 @@ import com.example.eduenglish.NavFiles.Search
 import com.example.eduenglish.NavFiles.Settings
 import com.example.eduenglish.NavFiles.StudyScreen
 import com.example.eduenglish.Notification.NotificationWorker
-import com.example.eduenglish.Retrofit.SearchViewModel
 import com.example.eduenglish.Room.AppDataBase
 import com.example.eduenglish.ViewModels.Other.SettingsViewModel
 import com.example.eduenglish.Routes.Routes
 import com.example.eduenglish.Routes.SelectorRoutes
+import com.example.eduenglish.ViewModels.Other.SearchViewModel
 import com.example.eduenglish.ui.theme.EduEnglishTheme
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking

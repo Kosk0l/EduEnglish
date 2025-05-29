@@ -16,7 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
-import com.example.eduenglish.Retrofit.SearchViewModel
+import com.example.eduenglish.ViewModels.Other.SearchViewModel
 
 
 @Composable
