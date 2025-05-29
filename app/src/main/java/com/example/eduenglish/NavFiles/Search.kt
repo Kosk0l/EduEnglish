@@ -15,10 +15,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.eduenglish.Retrofit.SearchViewModel
-import com.example.eduenglish.Routes.Routes
 
 
 @Composable
@@ -38,6 +36,8 @@ fun Search(viewModel: SearchViewModel) {
             color = MaterialTheme.colorScheme.surface,
             style = MaterialTheme.typography.headlineMedium
         )
+
+        Text("Колоды, одобренные модерацией:")
 
         LazyColumn {
             items(decks) { deck ->
