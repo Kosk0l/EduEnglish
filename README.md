@@ -6,6 +6,8 @@ interfaces: algorithms for study, creating decks and cards,
 card interface, Deck interface, Home, Search, Settings.
 Implemented communication with a server written in Go. repository - EduEngServerGo.
 
+Arhitecture: MVVM (view - viewModel - model).
+
 Tehnologies used:
 1. Android Jetpack Compose (UI, Navigation)
 2. Room (SqLite)
